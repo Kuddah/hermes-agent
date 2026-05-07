@@ -14,7 +14,9 @@ ENV PLAYWRIGHT_BROWSERS_PATH=/opt/hermes/.playwright
 # that would otherwise accumulate when hermes runs as PID 1. See #15012.
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    build-essential curl nodejs npm python3 ripgrep ffmpeg gcc python3-dev libffi-dev procps git openssh-client docker-cli tini && \
+    build-essential curl nodejs npm python3 ripgrep ffmpeg gcc python3-dev libffi-dev procps git openssh-client docker-cli tini \
+    libcairo2-dev libpango1.0-dev libgdk-pixbuf2.0-dev \
+    libreoffice poppler-utils fonts-liberation && \
     rm -rf /var/lib/apt/lists/*
 
 # Non-root user for runtime; UID can be overridden via HERMES_UID at runtime

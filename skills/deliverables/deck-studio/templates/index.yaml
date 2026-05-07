@@ -1,0 +1,59 @@
+templates:
+  # ── Title / cover slides ────────────────────────────────────────────────────
+  - id: title-dark
+    label: "Title Slide (Dark)"
+    description: "Hero title slide with gradient background, subtitle, and presenter line."
+    file: title_dark.html
+    tags: [title, cover, dark]
+
+  - id: title-light
+    label: "Title Slide (Light)"
+    description: "Clean light title slide with accent border."
+    file: title_light.html
+    tags: [title, cover, light]
+
+  # ── Content slides ──────────────────────────────────────────────────────────
+  - id: content-bullets
+    label: "Content + Bullets"
+    description: "Heading with up to 6 bullet points. Classic presentation format."
+    file: content_bullets.html
+    tags: [content, bullets]
+
+  - id: content-two-col
+    label: "Two-Column Content"
+    description: "Side-by-side text columns with shared heading."
+    file: content_two_col.html
+    tags: [content, columns]
+
+  - id: content-image-right
+    label: "Image + Text (Image Right)"
+    description: "Left text panel, right image placeholder."
+    file: content_image_right.html
+    tags: [content, image]
+
+  # ── Data / metrics slides ───────────────────────────────────────────────────
+  - id: metrics-cards
+    label: "Metric Cards"
+    description: "3-4 KPI cards with large number, label, and trend."
+    file: metrics_cards.html
+    tags: [data, metrics, kpi]
+
+  - id: comparison-table
+    label: "Comparison Table"
+    description: "Feature-vs-option comparison table with checkmarks."
+    file: comparison_table.html
+    tags: [data, table, comparison]
+
+  # ── Section divider slides ──────────────────────────────────────────────────
+  - id: section-divider
+    label: "Section Divider"
+    description: "Full-bleed colour slide to introduce a new section."
+    file: section_divider.html
+    tags: [divider, section]
+
+  # ── Closing slides ──────────────────────────────────────────────────────────
+  - id: closing-cta
+    label: "Closing / CTA"
+    description: "Thank-you slide with call-to-action and contact details."
+    file: closing_cta.html
+    tags: [closing, cta]

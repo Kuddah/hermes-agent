@@ -99,6 +99,21 @@ rl = [
   "uvicorn[standard]>=0.24.0,<1",
   "wandb>=0.15.0,<1",
 ]
+deliverables = [
+  # Document + slide production pipeline (HTML → DOCX/PDF, HTML → PPTX).
+  # Install: pip install 'hermes-agent[deliverables]'
+  # Requires system deps in Docker: libcairo2-dev libpango1.0-dev libreoffice poppler-utils fonts-liberation
+  "python-pptx>=1.0.0,<2",
+  "python-docx>=1.1.0,<2",
+  "weasyprint>=62.0,<63",
+  "pillow>=10.0.0,<12",
+  "cairosvg>=2.7.0,<3",
+  "pdf2image>=1.17.0,<2",
+  "markitdown[pptx]>=0.1.0,<1",
+  "defusedxml>=0.7.1,<1",
+  "html2text>=2024.2.26,<2025",
+  "beautifulsoup4>=4.12.0,<5",
+]
 yc-bench = ["yc-bench @ git+https://github.com/collinear-ai/yc-bench.git@bfb0c88062450f46341bd9a5298903fc2e952a5c ; python_version >= '3.12'"]
 all = [
   "hermes-agent[modal]",
@@ -127,6 +142,7 @@ all = [
   "hermes-agent[mistral]",
   "hermes-agent[bedrock]",
   "hermes-agent[web]",
+  "hermes-agent[deliverables]",
 ]
 
 [project.scripts]

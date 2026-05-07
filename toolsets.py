@@ -65,6 +65,12 @@ _HERMES_CORE_TOOLS = [
     # zero schema footprint. Gated via check_fn in tools/kanban_tools.py.
     "kanban_show", "kanban_complete", "kanban_block", "kanban_heartbeat",
     "kanban_comment", "kanban_create", "kanban_link",
+    # Deliverables — document + slide production (gated on [deliverables] install).
+    "document_tool",
+    "deck_create", "deck_insert_slides", "deck_modify_slide", "deck_read_slide",
+    "deck_delete_slide", "deck_list_slides", "deck_build_pptx",
+    "deck_screenshot", "deck_check", "deck_manage_theme",
+    "image_search",
 ]
 
 
@@ -202,6 +208,50 @@ TOOLSETS = {
         "description": "Spawn subagents with isolated context for complex subtasks",
         "tools": ["delegate_task"],
         "includes": []
+    },
+
+    # ---------------------------------------------------------------------------
+    # Deliverables toolsets — document, slide deck, and asset production
+    # Requires: pip install 'hermes-agent[deliverables]'
+    # ---------------------------------------------------------------------------
+
+    "document": {
+        "description": (
+            "Document creation and export: HTML → PDF (WeasyPrint), DOCX (python-docx), "
+            "Markdown, or TXT. Creates projects under mnt/<project>/documents/. "
+            "HTML is the canonical source; always create HTML first, then convert."
+        ),
+        "tools": ["document_tool"],
+        "includes": ["file"],
+    },
+
+    "deck": {
+        "description": (
+            "Slide deck production: HTML-based slides → editable PPTX via dom-to-pptx. "
+            "Full pipeline: create → insert stubs → modify content → QA check → build PPTX. "
+            "1280×720 viewport (16:9). Projects under mnt/<project>/presentations/."
+        ),
+        "tools": [
+            "deck_create", "deck_insert_slides", "deck_modify_slide",
+            "deck_read_slide", "deck_delete_slide", "deck_list_slides",
+            "deck_build_pptx", "deck_screenshot", "deck_check", "deck_manage_theme",
+        ],
+        "includes": ["file", "browser"],
+    },
+
+    "image_search": {
+        "description": "Search for royalty-free images (Pexels, Unsplash, Pixabay) and download/convert for slides and documents.",
+        "tools": ["image_search"],
+        "includes": [],
+    },
+
+    "deliverables": {
+        "description": (
+            "Full document + slide production pipeline. Combines document, deck, image search, "
+            "image generation, and web research for end-to-end deliverable creation."
+        ),
+        "tools": [],
+        "includes": ["document", "deck", "image_search", "image_gen", "web"],
     },
 
     # "honcho" toolset removed — Honcho is now a memory provider plugin.
